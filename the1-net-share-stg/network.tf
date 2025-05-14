@@ -96,7 +96,9 @@ resource "google_compute_router_nat" "the1_nat_stg" {
   region                             = google_compute_router.the1_router_stg.region
   project                            = module.project-factory.project_id
   nat_ip_allocate_option             = "AUTO_ONLY"
-  source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS"
+
+  source_subnetwork_ip_ranges_to_nat = "LIST_OF_SUBNETWORKS"  //use this row for create
+  # source_subnetwork_ip_ranges_to_nat = "ALL_SUBNETWORKS_ALL_IP_RANGES"  // use this row for delete and below subnet to comment
 
   subnetwork {
     name                    = "the1-subnet-frontend-stg"
@@ -113,13 +115,13 @@ resource "google_compute_router_nat" "the1_nat_stg" {
 
 
 //enable after already created peer project then update var.peer_project_id
-data "google_compute_network" "vpc_net_hub" {
-  name    = var.peer_network
-  project = var.peer_project_id
-}
+# data "google_compute_network" "vpc_net_hub" {
+#   name    = var.peer_network
+#   project = var.peer_project_id
+# }
 
-resource "google_compute_network_peering" "stg_hub_peering" {
-  name         = var.peer_name
-  network      = module.shared-vpc.network_self_link
-  peer_network = data.google_compute_network.vpc_net_hub.self_link
-}
+# resource "google_compute_network_peering" "stg_hub_peering" {
+#   name         = var.peer_name
+#   network      = module.shared-vpc.network_self_link
+#   peer_network = data.google_compute_network.vpc_net_hub.self_link
+# }
