@@ -112,7 +112,6 @@ resource "google_compute_router_nat" "the1_nat_prod" {
   }
 }
 
-
 //enable after already created peer project then update var.peer_project_id
 # data "google_compute_network" "vpc_net_hub" {
 #   name    = var.peer_network
@@ -124,3 +123,10 @@ resource "google_compute_router_nat" "the1_nat_prod" {
 #   network      = module.shared-vpc.network_self_link
 #   peer_network = data.google_compute_network.vpc_net_hub.self_link
 # }
+
+//adding service project to host project
+resource "google_compute_shared_vpc_service_project" "service_projects" {
+  for_each        = toset(var.service_project_ids)
+  host_project    = module.project-factory.project_id
+  service_project = each.key
+}

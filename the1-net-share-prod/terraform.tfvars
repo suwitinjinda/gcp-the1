@@ -21,3 +21,6 @@ labels = {
   team        = "the1-infra"
   create_by   = "infra1"
 }
+
+#service project
+service_project_ids = []

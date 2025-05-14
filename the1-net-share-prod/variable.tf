@@ -68,3 +68,8 @@ variable "labels" {
     create_by   = ""
   }
 }
+
+variable "service_project_ids" {
+  description = "List of service projects to attach to the host project"
+  type        = list(string)
+}
