@@ -4,6 +4,11 @@
 ./the1-net-share-stg/.terraform
 ./the1-net-share-prod/.terraform
 
+./the1-net-hub/terraform.exe
+./the1-net-share-stg/terraform.exe
+./the1-net-share-prod/terraform.exe
+
+
 
 # .tfstate files
 *.tfstate
