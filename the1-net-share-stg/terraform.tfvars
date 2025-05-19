@@ -1,10 +1,10 @@
 // Provide values for the variables
 region                   = "asia-southeast1"
-# project_id               = "the1-net-shared-nonprod-abcde"
-project_name             = "the1-net-stg"
-org_id                   = "84682267661"
-billing_account_id       = "01D996-3302C6-5F0E2F"
-folder_id                = "237950640851"  // Optional
+project_id               = "the1-network-stg"
+project_name             = "The1 - Network - Staging"
+org_id                   = "714395389901"
+billing_account_id       = "010980-A13142-B2DDB6"
+folder_id                = "31786212334"  // Common
 lien                     = false //use for develope
 activate_apis            = ["compute.googleapis.com", "storage.googleapis.com"]
 
@@ -12,7 +12,7 @@ activate_apis            = ["compute.googleapis.com", "storage.googleapis.com"]
 vpc_name                 = "the1-vpc-net-share-stg"
 #VPC peering
 peer_network             = "the1-vpc-net-hub" //peer VPC hub network
-peer_project_id          = "the1-net-hub-9cc0" //peer hub project ID
+peer_project_id          = "the1-network-hub" //peer hub project ID
 peer_name                = "the1-stg-hub-peering" //peer name
 
 #label

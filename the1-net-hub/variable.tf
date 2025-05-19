@@ -13,6 +13,11 @@ variable "project_name" {
   type        = string
 }
 
+variable "project_id" {
+  description = "ID of the GCP project"
+  type        = string
+}
+
 variable "org_id" {
   description = "Organization ID"
   type        = string

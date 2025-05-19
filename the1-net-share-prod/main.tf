@@ -6,15 +6,15 @@ provider "google" {
 }
 
 // Configure Terraform to use a GCS bucket for storing the state
-# terraform {
-#   backend "gcs" {
-#     bucket = "devops-terraformstate-nonprod-ntt"
-#     prefix =  "the1-net-shared-nonprod/project"
-#   }
-# }
-
 terraform {
-  backend "local" {
-    path = "./terraform.tfstate"
+  backend "gcs" {
+    bucket = "devops-terraformstate-prod"
+    prefix =  "the1-net-shared-prod/project"
   }
 }
+
+# terraform {
+#   backend "local" {
+#     path = "./terraform.tfstate"
+#   }
+# }

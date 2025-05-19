@@ -5,7 +5,8 @@ module "project-factory" {
 
 #project detail
   name                = var.project_name
-  project_id          = "${var.project_name}-${random_id.project_id_suffix.hex}"
+  project_id          = var.project_id
+  # project_id          = "${var.project_name}-${random_id.project_id_suffix.hex}"
   random_project_id   = false
   deletion_policy     = "DELETE"  // Allow project deletion use during develope
 
@@ -24,7 +25,7 @@ module "project-factory" {
   labels = {
     environment = var.labels.environment
     team        = var.labels.team
-    project     = var.project_name
+    project     = var.project_id
     create_by   = var.labels.create_by
   }
 }

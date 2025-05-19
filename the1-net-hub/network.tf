@@ -2,7 +2,6 @@ resource "google_compute_network" "vpc_network" {
   name                    = var.vpc_name
   auto_create_subnetworks = false
   project                 = module.project-factory.project_id
-  
 }
 
 resource "google_compute_subnetwork" "hub_compute_stg" {
@@ -26,26 +25,26 @@ resource "google_compute_subnetwork" "hub_compute_prod" {
 
 //enable after already created peer project then update var.peer_project_id
 
-# //peering to stg
-# data "google_compute_network" "vpc_net_share_stg" {
-#   name    = var.peer_network_stg
-#   project = var.peer_project_id_stg
-# }
+//peering to stg
+data "google_compute_network" "vpc_net_share_stg" {
+  name    = var.peer_network_stg
+  project = var.peer_project_id_stg
+}
 
-# resource "google_compute_network_peering" "hub_stg_peering" {
-#   name         = var.peer_name_stg
-#   network      = google_compute_network.vpc_network.self_link
-#   peer_network = data.google_compute_network.vpc_net_share_stg.self_link
-# }
+resource "google_compute_network_peering" "hub_stg_peering" {
+  name         = var.peer_name_stg
+  network      = google_compute_network.vpc_network.self_link
+  peer_network = data.google_compute_network.vpc_net_share_stg.self_link
+}
 
-# //peefing to prod
-# data "google_compute_network" "vpc_net_share_prod" {
-#   name    = var.peer_network_prod
-#   project = var.peer_project_id_prod
-# }
+//peefing to prod
+data "google_compute_network" "vpc_net_share_prod" {
+  name    = var.peer_network_prod
+  project = var.peer_project_id_prod
+}
 
-# resource "google_compute_network_peering" "hub_prod_peering" {
-#   name         = var.peer_name_prod
-#   network      = google_compute_network.vpc_network.self_link
-#   peer_network = data.google_compute_network.vpc_net_share_prod.self_link
-# }
+resource "google_compute_network_peering" "hub_prod_peering" {
+  name         = var.peer_name_prod
+  network      = google_compute_network.vpc_network.self_link
+  peer_network = data.google_compute_network.vpc_net_share_prod.self_link
+}
